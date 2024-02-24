@@ -153,8 +153,8 @@ MonoBehaviour:
   followTarget: {fileID: 0}
   distance: 5
   sensitivity: 1
-  minVerticalAngle: -25
+  minVerticalAngle: -7
   maxVerticalAngle: 50
-  framingOffset: {x: 0, y: 0}
+  framingOffset: {x: 0, y: 1}
   invertX: 0
-  invertY: 0
+  invertY: 1
