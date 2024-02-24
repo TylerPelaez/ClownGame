@@ -781,26 +781,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5037994994817906779, guid: 49fe96b4bc789eb4babec63a7715b806,
+    - target: {fileID: 5161521754308753425, guid: 49fe96b4bc789eb4babec63a7715b806,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fb64fa52c478eac42abb9aa6bc349260, type: 2}
-    - target: {fileID: 5037994994817906779, guid: 49fe96b4bc789eb4babec63a7715b806,
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161521754308753425, guid: 49fe96b4bc789eb4babec63a7715b806,
         type: 3}
-      propertyPath: m_UpdateMode
+      propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5037994994817906779, guid: 49fe96b4bc789eb4babec63a7715b806,
+    - target: {fileID: 5161521754308753425, guid: 49fe96b4bc789eb4babec63a7715b806,
         type: 3}
-      propertyPath: m_ApplyRootMotion
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5161521754317838269, guid: 49fe96b4bc789eb4babec63a7715b806,
+    - target: {fileID: 6362297281720269076, guid: 49fe96b4bc789eb4babec63a7715b806,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fb64fa52c478eac42abb9aa6bc349260, type: 2}
+      propertyPath: m_Height
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362297281720269076, guid: 49fe96b4bc789eb4babec63a7715b806,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362297281720269076, guid: 49fe96b4bc789eb4babec63a7715b806,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362297281720269076, guid: 49fe96b4bc789eb4babec63a7715b806,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.93
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
