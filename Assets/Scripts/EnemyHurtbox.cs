@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour
+public class EnemyHurtbox : MonoBehaviour
 {
     [SerializeField]
     private LayerMask layerMask;
