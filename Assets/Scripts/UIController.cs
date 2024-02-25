@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -16,7 +17,8 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject healthBar;
 
-
+    [SerializeField]
+    private GameObject victoryPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +39,16 @@ public class UIController : MonoBehaviour
                 i < playerHealth.CurrentHealth ? heartFullSprite : heartEmptySprite;
         }
         healthBar.GetComponent<HorizontalLayoutGroup>().CalculateLayoutInputHorizontal();
+    }
+
+    public void ShowVictoryMenu()
+    {
+        Time.timeScale = 0;
+        victoryPanel.SetActive(true);
+    }
+    
+    public void OnMenuButtonClicked()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
