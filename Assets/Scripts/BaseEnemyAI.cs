@@ -98,6 +98,11 @@ public class BaseEnemyAI : MonoBehaviour
         
     }
 
+    public void OnDeath()
+    {
+        Destroy(gameObject);
+    }
+
     enum State
     {
         Idle,

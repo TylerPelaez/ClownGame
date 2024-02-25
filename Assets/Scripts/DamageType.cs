@@ -1,5 +1,6 @@
 ﻿public enum DamageType
 {
     Stomp,
-    Pie
+    Pie,
+    Enemy
 }

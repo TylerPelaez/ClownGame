@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1696725342349023639}
   - component: {fileID: 5074002320222050945}
   - component: {fileID: 4238635641819155142}
+  - component: {fileID: 9124060513799168231}
   m_Layer: 9
   m_Name: Pie
-  m_TagString: Untagged
+  m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +126,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5076798556035486163, guid: de365f67d8100f14e820e38a3f3c4c7b, type: 3}
+--- !u!114 &9124060513799168231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200657082694211167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df0e1da512967643921d633648c3a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
+  damageType: 1
