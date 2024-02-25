@@ -23,6 +23,9 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, playerHealth.MaxHealth * 80);
+        
+        
         for (int i = 0; i < playerHealth.MaxHealth; i++)
         {
             Instantiate(heartPrefab, healthBar.transform, true);
