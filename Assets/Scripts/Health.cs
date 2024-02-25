@@ -5,19 +5,30 @@ public class Health : MonoBehaviour
 {
     [SerializeField]
     private int maxHealth = 1;
-    private int health;
+
+    [SerializeField]
+    private int health = 1;
+    
+    
+    public int MaxHealth => maxHealth;
+
+    public int CurrentHealth
+    {
+        get => health;
+        private set => health = value;
+    }
 
     public UnityEvent OnDeath;
     
     private void Start()
     {
-        health = maxHealth;
+        CurrentHealth = MaxHealth;
     }
 
     public void OnHurt(int amount, DamageType type)
     {
-        health -= amount;
-        if (health < 0)
+        CurrentHealth -= amount;
+        if (CurrentHealth <= 0)
         {
             OnDeath?.Invoke();
         }

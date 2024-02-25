@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
-public class PlayerHurtbox : MonoBehaviour
+public class EnemyHurtbox : MonoBehaviour
 {
     [SerializeField]
     private LayerMask layerMask;
@@ -12,7 +10,7 @@ public class PlayerHurtbox : MonoBehaviour
     public UnityEvent<int, DamageType> OnHurt;
 
     [SerializeField]
-    private float invincibilityTime = 0.5f;
+    private float invincibilityTime = 0.2f;
     private bool invincible;
 
     public void OnTriggerEnter(Collider other)
@@ -49,6 +47,8 @@ public class PlayerHurtbox : MonoBehaviour
 
     public void OnDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // TODO: Animate
+        Destroy(gameObject);
     }
+    
 }
