@@ -710,7 +710,7 @@ MonoBehaviour:
   rightFootBone: {fileID: 1280232083}
   leftStilt: {fileID: 119154465}
   rightStilt: {fileID: 2084211378}
-  offsetY: 1.75
+  offsetY: -0.1
 --- !u!1 &1826062417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5103512521432876379, guid: 49fe96b4bc789eb4babec63a7715b806,

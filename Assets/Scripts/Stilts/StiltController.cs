@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class StiltController : MonoBehaviour
 {
+    Transform leftStilt;
+    Transform rightStilt;
     CameraController cameraController;
 
-    // Track time since last scaling operation
     private float lastScaledTime;
-
-    // Define cooldown duration in seconds
     public float cooldownDuration = 0.28f;
 
     public GameObject clown;
@@ -23,7 +22,10 @@ public class StiltController : MonoBehaviour
     void Start()
     {
         // Set lastScaledTime to current time to avoid immediate scaling
-        lastScaledTime = Time.time - cooldownDuration;   
+        lastScaledTime = Time.time - cooldownDuration;
+
+        leftStilt = transform.Find("LeftStilt");
+        rightStilt = transform.Find("RightStilt");
     }
 
     // Update is called once per frame
@@ -38,9 +40,9 @@ public class StiltController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                ScaleStiltsUp();
+                ScaleStiltsUp();        
             }
-        }       
+        }          
     }
 
     void ScaleStiltsUp()
@@ -62,7 +64,19 @@ public class StiltController : MonoBehaviour
 
             UpdateClownPosition();
         }
-        
+
+        if (transform.localScale.y <= 0)
+        {
+            // Disable the mesh renderers of both stilts
+            leftStilt.GetComponent<MeshRenderer>().enabled = false;
+            rightStilt.GetComponent<MeshRenderer>().enabled = false;
+        }
+        else
+        {
+            // Enable the mesh renderers of both stilts
+            leftStilt.GetComponent<MeshRenderer>().enabled = true;
+            rightStilt.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
 
     void ScaleStiltsDown()
@@ -84,7 +98,19 @@ public class StiltController : MonoBehaviour
 
             UpdateClownPosition();
         }
-        
+
+        if (transform.localScale.y <= 0)
+        {
+            // Disable the mesh renderers of both stilts
+            leftStilt.GetComponent<MeshRenderer>().enabled = false;
+            rightStilt.GetComponent<MeshRenderer>().enabled = false;
+        }
+        else
+        {
+            // Enable the mesh renderers of both stilts
+            leftStilt.GetComponent<MeshRenderer>().enabled = true;
+            rightStilt.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
 
     void UpdateClownPosition()
