@@ -9,27 +9,29 @@ public class StiltsIK : MonoBehaviour
     public Transform leftStilt;
     public Transform rightStilt;
 
+    [SerializeField] float offsetY;
+
     void LateUpdate()
     {
-        // Update left foot IK target position
+        // Left foot
         if (leftFootIKTarget != null && leftFootBone != null)
         {
-            leftFootIKTarget.position = leftFootBone.position + new Vector3(0f,-1.25f,0f);
+            Vector3 leftBonePosition = leftFootBone.position - new Vector3(0f, transform.localScale.y/2.0f - offsetY, 0f);
 
-            // Calculate the difference in position between the current positions of the stilts and the IK targets
-            Vector3 positionDifference = leftFootIKTarget.position - leftStilt.position;
+            // Calculate the difference in position between the current positions of the stilts and the bones
+            Vector3 positionDifference = leftBonePosition - leftStilt.position;
 
             // Apply the position difference to the left stilt
             leftStilt.position += positionDifference;
         }
 
-        // Update right foot IK target position
+        // Right foot
         if (rightFootIKTarget != null && rightFootBone != null)
         {
-            rightFootIKTarget.position = rightFootBone.position + new Vector3(0f, -1.25f, 0f); 
+            Vector3 rightBonePosition = rightFootBone.position - new Vector3(0f, transform.localScale.y/2.0f - offsetY, 0f);
 
-            // Calculate the difference in position between the current positions of the stilts and the IK targets
-            Vector3 positionDifference = rightFootIKTarget.position - rightStilt.position;
+            // Calculate the difference in position between the current positions of the stilts and the bones
+            Vector3 positionDifference = rightBonePosition - rightStilt.position;
 
             // Apply the position difference to the right stilt
             rightStilt.position += positionDifference;

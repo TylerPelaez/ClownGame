@@ -10,7 +10,7 @@ public class StiltController : MonoBehaviour
     private float lastScaledTime;
 
     // Define cooldown duration in seconds
-    public float cooldownDuration = 0.35f;
+    public float cooldownDuration = 0.28f;
 
     public GameObject clown;
     public GameObject ground;   
@@ -90,19 +90,13 @@ public class StiltController : MonoBehaviour
     void UpdateClownPosition()
     {
         // Define the desired position offset for the clown avatar
-        float desiredYOffset = -2.5f;
+        float desiredYOffset = -3f;
 
         // Calculate the actual position offset based on the scale of the stilts
         float actualYOffset = desiredYOffset * (3f - transform.localScale.y) / 3f;
 
         // Apply the position offset to the clown avatar
         clown.transform.localPosition = new Vector3(clown.transform.localPosition.x, actualYOffset, clown.transform.localPosition.z);
-
-        // Calculate the desired position offset for the stilts to touch the ground
-        float groundOffset = 0.5f * transform.localScale.y;
-
-        // Apply the position offset to the stilts
-        transform.position = new Vector3(transform.position.x, ground.transform.position.y + groundOffset, transform.position.z);
     }
 }
 
