@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector3 groundCheckOffset;
     [SerializeField] LayerMask groundLayer;
 
-
     public GameObject enemyAimTarget;
     
     CameraController cameraController;
@@ -19,8 +18,6 @@ public class PlayerController : MonoBehaviour
     CharacterController characterController;
 
     Quaternion targetRotation;
-
-    bool isGrounded;
 
     float ySpeed;
 
@@ -51,12 +48,11 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1); // Go to main menu if esc key is pressed
         }
 
-        GroundCheck();
-
-        if (isGrounded)
+        if (isGrounded())
         {
             // if player is on the ground, reset the ySpeed back to normal (which is 0). Instead of this though,
             // doing -0.5 can make sure the player is really on the ground and fall in any case
+            
             ySpeed = -0.5f;
         }
         else
@@ -86,10 +82,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Checks if player is on the ground using physics. We could also use the built-in PlayerController.isGrounded to check, but it seems to be buggy
-    void GroundCheck()
+    bool isGrounded()
     {
         // checks if any colliders are overlapping the sphere (player feet collider)
-        isGrounded = Physics.CheckSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius, groundLayer);
+        return Physics.CheckSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius, groundLayer);
     }
 
     // Draws a gizmo when the player object is selected so we can visualize the sphere collider
