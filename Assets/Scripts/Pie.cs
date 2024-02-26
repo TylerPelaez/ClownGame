@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,9 +40,16 @@ public class Pie : MonoBehaviour
         if ( other.gameObject != ignoreCollisions && destroyMask == (destroyMask | (1 << other.gameObject.layer)))
         {
             OnHit?.Invoke();
-            FindObjectOfType<AudioManager>().Play("PieHit");
+            FindObjectOfType<AudioManager>().Play("PieHit", transform.position);
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var other = collision.collider;
+        if ( other.gameObject != ignoreCollisions && destroyMask == (destroyMask | (1 << other.gameObject.layer)))
+            Destroy(gameObject);
     }
 
     private IEnumerator AwaitDeath()

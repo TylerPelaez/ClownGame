@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.212908, y: -3.313359, z: -5.3591557}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,6 +109,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls: []
+  ignoreCollisions: {fileID: 0}
 --- !u!64 &4238635641819155142
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -145,6 +146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   damageType: 1
+  OnDisableRequested:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &-560077674324918338
 Rigidbody:
   m_ObjectHideFlags: 0
