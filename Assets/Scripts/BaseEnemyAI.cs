@@ -18,7 +18,13 @@ public class BaseEnemyAI : MonoBehaviour
     
     private NavMeshAgent navMeshAgent;
     private GameObject player;
-    
+
+    [SerializeField]
+    private Animator animator;
+
+    private static readonly int Walking = Animator.StringToHash("Walking");
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +80,7 @@ public class BaseEnemyAI : MonoBehaviour
         
         navMeshAgent.SetDestination(gameObject.transform.position);
         navMeshAgent.isStopped = true;
+        animator.SetBool(Walking, false);
     }
 
     private void EnterChase()
@@ -89,8 +96,9 @@ public class BaseEnemyAI : MonoBehaviour
             EnterIdle();
         }
         
-        
         navMeshAgent.SetDestination(player.transform.position);
+        
+        animator.SetBool("Walking", navMeshAgent.velocity != Vector3.zero);
     }
 
     private void Attack()

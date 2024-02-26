@@ -49,12 +49,12 @@ public class PlayerController : MonoBehaviour
         {
             // if player is on the ground, reset the ySpeed back to normal (which is 0). Instead of this though,
             // doing -0.5 can make sure the player is really on the ground and fall in any case
-            //ySpeed = -0.5f;
+            ySpeed = -0.5f;
         }
         else
         {
             // increase speed every second of y with the gravity produced by game
-            //ySpeed += Physics.gravity.y * Time.deltaTime;
+            ySpeed += Physics.gravity.y * Time.deltaTime;
         }
 
         var velocity = moveDirection * moveSpeed;
