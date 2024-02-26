@@ -722,6 +722,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: StiltWalk
+    clip: {fileID: 8300000, guid: 589168cb49eb35d4ba1fec3c142589ad, type: 3}
+    volume: 0.217
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PieThrow
+    clip: {fileID: 8300000, guid: f147f6d44373f624189fea4cd94f4cb1, type: 3}
+    volume: 0.217
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1001 &245544374
 PrefabInstance:
   m_ObjectHideFlags: 0
