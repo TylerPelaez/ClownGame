@@ -24,6 +24,7 @@ public class Pie : MonoBehaviour
     {
         if (destroyMask == (destroyMask | (1 << other.gameObject.layer)))
         {
+            FindObjectOfType<AudioManager>().Play("PieHit");
             Destroy(gameObject);
         }
     }

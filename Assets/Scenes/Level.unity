@@ -594,7 +594,7 @@ PrefabInstance:
     - target: {fileID: 1832175662463790914, guid: 49fe96b4bc789eb4babec63a7715b806,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1832175662463790914, guid: 49fe96b4bc789eb4babec63a7715b806,
         type: 3}
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Player Hit
+  - name: PlayerHit
     clip: {fileID: 8300000, guid: f1e69fd61cad76040a72331b5a165175, type: 3}
     volume: 0.256
     pitch: 1
@@ -694,19 +694,19 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: StiltDown
     clip: {fileID: 8300000, guid: 7dfb437b7790b8c4f970f1675afb3d1c, type: 3}
-    volume: 0.24
+    volume: 0.178
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: StiltUp
     clip: {fileID: 8300000, guid: eccb45c1caf46e2478f581db76a0f674, type: 3}
-    volume: 0.233
+    volume: 0.163
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: StiltStretch
     clip: {fileID: 8300000, guid: 860d86887c6bcd24e8fca0d283c95819, type: 3}
-    volume: 0.287
+    volume: 0.24
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -716,9 +716,9 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: PieThrow
-    clip: {fileID: 8300000, guid: f147f6d44373f624189fea4cd94f4cb1, type: 3}
-    volume: 0.287
+  - name: PitHit
+    clip: {fileID: 8300000, guid: eb901b89cf99b4b4fb591986384b7dbe, type: 3}
+    volume: 0.217
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -1344,12 +1344,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e75888c032804424db7afd305dd494aa, type: 3}
---- !u!4 &521245606 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1832175662463790914, guid: 49fe96b4bc789eb4babec63a7715b806,
-    type: 3}
-  m_PrefabInstance: {fileID: 157411862}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &773652843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5098819861566343964, guid: 8e20f672c3bd4584fa02fdbc6455ecca,
@@ -2983,7 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac3b3a0b2f08e1468e6a4571bc734fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followTarget: {fileID: 521245606}
+  followTarget: {fileID: 1962002532}
   distance: 5
   sensitivity: 1
   minVerticalAngle: 5
@@ -3035,6 +3029,12 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!4 &1962002532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7084287233914277321, guid: 49fe96b4bc789eb4babec63a7715b806,
+    type: 3}
+  m_PrefabInstance: {fileID: 157411862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2029814155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 229489894541519581, guid: e75888c032804424db7afd305dd494aa,

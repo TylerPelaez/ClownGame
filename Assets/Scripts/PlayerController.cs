@@ -91,6 +91,11 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius);
     }
     
+    public void PlayHitAudio()
+    {
+        FindObjectOfType<AudioManager>().Play("PlayerHit");
+    }
+
     public void OnDeath()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
