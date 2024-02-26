@@ -31,21 +31,6 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-
-        if (currentScene.name == "MainMenu")
-        {
-            isMainMenu = true;
-        }
-
-        if (isMainMenu)
-        {
-            Play("MainMenuSong");
-        }
-        else
-        {
-            Play("ThemeSong");
-            Play("BackgroundNoise");
-        }
     }
 
     private void Start()

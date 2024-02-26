@@ -5,12 +5,29 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
     [Header("Volume Setting")]
     [SerializeField] TMP_Text volumeTextValue = null;
     [SerializeField] Slider volumeSlider = null;
+
+    public void Start()
+    {
+        // Find the EventSystem in the scene
+        EventSystem eventSystem = FindObjectOfType<EventSystem>();
+
+        // If EventSystem exists, set it as the current event system
+        if (eventSystem != null)
+        {
+            EventSystem.current = eventSystem;
+        }
+        else
+        {
+            Debug.LogWarning("No EventSystem found in the scene.");
+        }
+    }
 
     public void PlayGame()
     {
@@ -27,6 +44,7 @@ public class MainMenu : MonoBehaviour
     {
         AudioListener.volume = volume;
         volumeTextValue.text = volume.ToString("0.0");
+        volumeSlider.value = volume;
     }
 
     public void VolumeApply()
