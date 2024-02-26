@@ -54,6 +54,6 @@ public class UIController : MonoBehaviour
     
     public void OnMenuButtonClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
         // references the camera's property from CameraController script called PlanarRotation so the player does not move up and down based on camera rotation
         var moveDirection = cameraController.PlanarRotation * moveInput;
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1); // Go to main menu if esc key is pressed
+        }
+
         GroundCheck();
 
         if (isGrounded)
@@ -94,9 +99,17 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius);
     }
     
-    public void PlayHitAudio()
+    public void PlayHitAudio(int amount, DamageType type)
     {
-        FindObjectOfType<AudioManager>().Play("PlayerHit");
+        if (type == DamageType.Healing)
+        {
+            FindObjectOfType<AudioManager>().Play("HealthPickUp");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerHit");
+        }
+        
     }
 
     public void OnDeath()
