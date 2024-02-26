@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] float minVerticalAngle = -25;
     [SerializeField] float maxVerticalAngle = 50;
 
-    [SerializeField] Vector2 framingOffset;
+    public Vector2 framingOffset;
 
     [SerializeField] bool invertX;
     [SerializeField] bool invertY;
