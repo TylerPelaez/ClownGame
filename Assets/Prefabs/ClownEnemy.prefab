@@ -165,6 +165,7 @@ MonoBehaviour:
     type: 3}
   projectileOrigin: {fileID: 4217384418707664893}
   attackCooldown: 2
+  lastLeftAttackStateTime: 0
   meleeHitboxObject: {fileID: 0}
   turnSpeed: 5
   state: 0
@@ -297,6 +298,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   damageType: 2
+  OnDisableRequested:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &4217384418707761473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,6 +404,21 @@ MonoBehaviour:
       - m_Target: {fileID: 5333130393495142152}
         m_TargetAssemblyTypeName: BaseEnemyAI, Assembly-CSharp
         m_MethodName: OnDoAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeathComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5333130393495142152}
+        m_TargetAssemblyTypeName: BaseEnemyAI, Assembly-CSharp
+        m_MethodName: OnDeathComplete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private GameObject player;
+
+    private bool isMainMenu = false;
+    
     
     private void Awake()
     {

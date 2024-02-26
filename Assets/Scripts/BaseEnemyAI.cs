@@ -31,6 +31,8 @@ public class BaseEnemyAI : MonoBehaviour
     [SerializeField]
     private float attackCooldown = 1;
 
+    
+    [SerializeField]
     private float lastLeftAttackStateTime;
 
 
@@ -54,6 +56,9 @@ public class BaseEnemyAI : MonoBehaviour
     private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
     private static readonly int Attacking = Animator.StringToHash("Attacking");
 
+
+    private int attackStateFrameCounts = 0;
+    private static readonly int Dead = Animator.StringToHash("Dead");
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +88,8 @@ public class BaseEnemyAI : MonoBehaviour
                 break;
             case State.Attack:
                 AttackState();
+                break;
+            case State.Death:
                 break;
         }
     }
@@ -187,14 +194,15 @@ public class BaseEnemyAI : MonoBehaviour
 
     private void AttackState()
     {
+        attackStateFrameCounts += 1;
         if (animator.GetBool(Attacking))
         {
             animator.SetBool(Attacking, false);
         }
 
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (attackStateFrameCounts > 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !animator.GetNextAnimatorStateInfo(0).IsName("Attack"))
         {
-            lastLeftAttackStateTime = Time.time;
+            Debug.Log("EndAttack");
             if (!IsPlayerInDistanceSq(attackRangeSq))
             {
                 EnterChase();
@@ -237,19 +245,59 @@ public class BaseEnemyAI : MonoBehaviour
     
     private void EnterAttack()
     {
+        Debug.Log("EnterAttack");
+        lastLeftAttackStateTime = Time.time;
         state = State.Attack;
         navMeshAgent.SetDestination(gameObject.transform.position);
         navMeshAgent.isStopped = true;
         animator.SetBool(Attacking, true);
         animator.SetBool(Walking, false);
         animator.SetFloat(MoveSpeed, 0);
+        attackStateFrameCounts = 0;
     }
 
     public void OnDeath()
     {
-        Destroy(gameObject);
+        state = State.Death;
+
+        navMeshAgent.SetDestination(gameObject.transform.position);
+        navMeshAgent.isStopped = true;
+        animator.SetBool(Dead, true);
+        animator.SetBool(Walking, false);
+        animator.SetFloat(MoveSpeed, 0);
+        animator.SetBool(Attacking, false);
+        
+        if (meleeHitboxObject != null)
+            meleeHitboxObject.SetActive(false);
+        var hurtbox = GetComponent<Hurtbox>();
+        var hitbox = GetComponent<Hitbox>();
+        var collider = GetComponent<Collider>();
+        
+        if (hurtbox == null)
+            hurtbox = gameObject.GetComponentInChildren<Hurtbox>();
+        if (hitbox == null)
+            hitbox = gameObject.GetComponentInChildren<Hitbox>();
+        if (collider == null)
+            collider = gameObject.GetComponentInChildren<Collider>();
+        
+        
+        if (hurtbox != null)
+            Destroy(hurtbox);
+        
+        if (hitbox != null)
+            Destroy(hitbox);
+
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
     }
 
+    public void OnDeathComplete()
+    {
+        Destroy(gameObject);
+    }
+    
 
     public bool ShouldAttack()
     {
@@ -273,6 +321,7 @@ public class BaseEnemyAI : MonoBehaviour
         Idle,
         Chase,
         Attack,
+        Death,
     }
 
     public void DisableMeleeHitbox()

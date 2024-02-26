@@ -22,6 +22,9 @@ public class Hurtbox : MonoBehaviour
     private bool invincible;
     private const float InvincibilityBlinkStep = 0.1f;
 
+    [SerializeField]
+    private bool canDoInvincibility = false;
+    
     public void OnTriggerEnter(Collider other)
     {
         HandleTrigger(other);
@@ -65,14 +68,16 @@ public class Hurtbox : MonoBehaviour
                 hitbox.RequestDisable();
             }
 
-            invincible = true;
+            if (canDoInvincibility)
+            {
+                StartCoroutine(WaitForInvincibility());
+                invincible = true;
+            }
+            
             if (other.gameObject.GetComponent<Pie>() != null)
             {
                 Destroy(other.gameObject);
             }
-            
-            
-            StartCoroutine(WaitForInvincibility());
         }
     }
 

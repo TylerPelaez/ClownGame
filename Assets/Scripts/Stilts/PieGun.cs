@@ -27,7 +27,7 @@ public class PieGun : MonoBehaviour
         {
             Vector3 stiltsCurrentScale = stilts.transform.localScale;
 
-            if (stiltsCurrentScale.y <= 0f)
+            if (stiltsCurrentScale.y <= 0.03f)
             {
                 this.GetComponent<MeshRenderer>().enabled = true;
 

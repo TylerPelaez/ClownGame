@@ -212,11 +212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownDuration: 0.5
-  currentScale: {x: 0, y: 0, z: 0}
   clown: {fileID: 7573824323257620339}
   ground: {fileID: 0}
   clownMeshYOffset: 2.9
   stompHitbox: {fileID: 6709327901789190073}
+  tweenTime: 0.4
+  ShowHidePieGun:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7113138028488613002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +536,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 5612298866181260282}
   secondaryMeshRenderer: {fileID: 6286517048614613775}
   invincibilityTime: 0.5
+  canDoInvincibility: 1
 --- !u!54 &1212585903946141495
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2353,6 +2357,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 8960724786860828294}
   secondaryMeshRenderer: {fileID: 0}
   invincibilityTime: 0.7
+  canDoInvincibility: 1
 --- !u!54 &868740702720003005
 Rigidbody:
   m_ObjectHideFlags: 0
