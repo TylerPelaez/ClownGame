@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    PieGun pieGunScript;
+
     [SerializeField]
     private GameObject piePrefab;
 
@@ -9,10 +11,15 @@ public class PlayerShooting : MonoBehaviour
     private float shootCooldown = 1f;
     
     private float lastFiredTime;
-    
+
+    private void Start()
+    {
+        pieGunScript = GetComponent<PieGun>();
+    }
+
     private void Update()
     {
-        if (Input.GetButton("Fire1") && (Time.time - lastFiredTime) > shootCooldown)
+        if (Input.GetButton("Fire1") && (Time.time - lastFiredTime) > shootCooldown && pieGunScript.isPieGunVisible)
         {
             var instance = Instantiate(piePrefab, transform.position, Quaternion.identity);
             lastFiredTime = Time.time;
