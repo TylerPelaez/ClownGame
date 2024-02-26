@@ -15,7 +15,7 @@ public class Hurtbox : MonoBehaviour
     public UnityEvent<int, DamageType> OnHurt;
 
     [SerializeField]
-    private Renderer meshRenderer;
+    private Renderer meshRenderer, secondaryMeshRenderer;
     
     [SerializeField]
     private float invincibilityTime = 0.2f;
@@ -34,19 +34,37 @@ public class Hurtbox : MonoBehaviour
 
     private void HandleTrigger(Collider other)
     {
+        var hitbox = other.gameObject.GetComponent<Hitbox>();
+        if (hitbox == null)
+        {
+            return;
+        }
+        
+        if (damageTypeImmunities.Contains(hitbox.DamageType))
+        {
+            return;
+        }
+
+        // Love hurts!
+        if (hitbox.DamageType == DamageType.Healing)
+        {
+            OnHurt?.Invoke(hitbox.DamageAmount, hitbox.DamageType);
+            Destroy(other.gameObject);
+            return;
+        }
+        
+        
         if (invincible)
             return;
             
         if (layerMask == (layerMask | (1 << other.gameObject.layer)))
         {
-
-            var hitbox = other.gameObject.GetComponent<Hitbox>();
-            if (damageTypeImmunities.Contains(hitbox.DamageType))
-            {
-                return;
-            }
-            
             OnHurt?.Invoke(hitbox.DamageAmount, hitbox.DamageType);
+            if (gameObject.name == "StiltsHurtbox" && hitbox.DamageType == DamageType.EnemyDropStilts)
+            {
+                hitbox.RequestDisable();
+            }
+
             invincible = true;
             if (other.gameObject.GetComponent<Pie>() != null)
             {
@@ -63,7 +81,10 @@ public class Hurtbox : MonoBehaviour
         float totalTime = 0;
         while (true)
         {
-            meshRenderer.enabled = !meshRenderer.enabled;
+            if (meshRenderer != null)
+                meshRenderer.enabled = !meshRenderer.enabled;
+            if (secondaryMeshRenderer != null)
+                secondaryMeshRenderer.enabled = !secondaryMeshRenderer.enabled;
             totalTime += InvincibilityBlinkStep;
             if (totalTime >= invincibilityTime)
             {
@@ -72,7 +93,10 @@ public class Hurtbox : MonoBehaviour
 
             yield return new WaitForSeconds(InvincibilityBlinkStep);
         }
-        meshRenderer.enabled = true;
+        if (meshRenderer != null)
+            meshRenderer.enabled = true;
+        if (secondaryMeshRenderer != null)
+            secondaryMeshRenderer.enabled = true;
         invincible = false;
     }
 }

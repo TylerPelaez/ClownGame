@@ -47,6 +47,8 @@ public class UIController : MonoBehaviour
     public void ShowVictoryMenu()
     {
         Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         victoryPanel.SetActive(true);
     }
     

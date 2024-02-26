@@ -69,10 +69,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleloop: {fileID: 5738570824730964962}
   floatLoop: 0
-  fireDelay: 4
+  fireDelay: 2
   piePrefab: {fileID: 4200657082694211167, guid: c4dd95c1b662dcd4cb8d86c9992ed845,
     type: 3}
   pieOrigin: {fileID: 6530025193657677799}
+  collisionObject: {fileID: 7335996122552761525}
 --- !u!1 &5930944848587875705
 GameObject:
   m_ObjectHideFlags: 0

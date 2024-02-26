@@ -2,5 +2,7 @@
 {
     Stomp,
     Pie,
-    Enemy
+    Enemy,
+    EnemyDropStilts,
+    Healing,
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5074002320222050945}
   - component: {fileID: 4238635641819155142}
   - component: {fileID: 9124060513799168231}
+  - component: {fileID: -560077674324918338}
   m_Layer: 7
   m_Name: EvilPie
   m_TagString: Pie
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.212908, y: -3.313359, z: -5.3591557}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,6 +109,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls: []
+  ignoreCollisions: {fileID: 0}
 --- !u!64 &4238635641819155142
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -144,3 +146,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   damageType: 1
+  OnDisableRequested:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!54 &-560077674324918338
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200657082694211167}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -165,6 +165,8 @@ MonoBehaviour:
     type: 3}
   projectileOrigin: {fileID: 4217384418707664893}
   attackCooldown: 2
+  meleeHitboxObject: {fileID: 0}
+  turnSpeed: 5
   state: 0
 --- !u!54 &5105766627690456564
 Rigidbody:
@@ -208,7 +210,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  damageTypeImmunities: 0100000002000000
+  damageTypeImmunities: 01000000020000000300000004000000
   OnHurt:
     m_PersistentCalls:
       m_Calls:
@@ -224,7 +226,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 4217384418710840033}
+  secondaryMeshRenderer: {fileID: 0}
   invincibilityTime: 0.2
 --- !u!1 &8917418020497305955
 GameObject:
@@ -409,6 +412,12 @@ MonoBehaviour:
 --- !u!1 &4217384418707664893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: 77a32863e7db71143ace465657f12120,
+    type: 3}
+  m_PrefabInstance: {fileID: 4217384418707761473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4217384418710840033 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: 77a32863e7db71143ace465657f12120,
     type: 3}
   m_PrefabInstance: {fileID: 4217384418707761473}
   m_PrefabAsset: {fileID: 0}

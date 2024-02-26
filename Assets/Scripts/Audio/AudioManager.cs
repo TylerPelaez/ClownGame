@@ -9,10 +9,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    private GameObject player;
     
-
-    bool isMainMenu = false;
-
     private void Awake()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -52,11 +50,23 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-         
+        Play("ThemeSong");
+        Play("BackgroundNoise");
+        player = GameObject.FindWithTag("Player");
     }
 
-    public void Play (string name)
+    public void Play (string name, Vector3? soundOrigin = null)
     {
+        if (soundOrigin != null)
+        {
+            // Prevent Pie cannons from spamming fart noises
+            if ((soundOrigin.Value - player.transform.position).magnitude > 20)
+            {
+                return;
+            }
+        }
+        
+        
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
         if (s == null)

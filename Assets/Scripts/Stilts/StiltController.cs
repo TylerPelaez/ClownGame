@@ -71,7 +71,7 @@ public class StiltController : MonoBehaviour
         }
     }
 
-    void ScaleStiltsDown()
+    public void ScaleStiltsDown()
     {
         currentScale = transform.localScale;
 
