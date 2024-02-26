@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,8 +9,13 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    
+
+    bool isMainMenu = false;
+
     private void Awake()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
         if (instance == null)
             instance = this;
         else
@@ -27,12 +33,26 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
+        if (currentScene.name == "MainMenu")
+        {
+            isMainMenu = true;
+        }
+
+        if (isMainMenu)
+        {
+            Play("MainMenuSong");
+        }
+        else
+        {
+            Play("ThemeSong");
+            Play("BackgroundNoise");
+        }
     }
 
     private void Start()
     {
-        Play("ThemeSong");
-        Play("BackgroundNoise");
+         
     }
 
     public void Play (string name)
