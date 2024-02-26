@@ -17,9 +17,13 @@ public class StiltController : MonoBehaviour
     public GameObject clown;
     public GameObject ground;
 
+
+    [SerializeField]
+    private float clownMeshYOffset = 2.9f;
+    
     [SerializeField]
     private BoxCollider stompHitbox;
-    
+
     private void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
@@ -120,7 +124,7 @@ public class StiltController : MonoBehaviour
         float actualYOffset = desiredYOffset * (3f - transform.localScale.y) / 3f;
 
         // Apply the position offset to the clown avatar
-        clown.transform.localPosition = new Vector3(clown.transform.localPosition.x, actualYOffset + 3f, clown.transform.localPosition.z);
+        clown.transform.localPosition = new Vector3(clown.transform.localPosition.x, actualYOffset + clownMeshYOffset, clown.transform.localPosition.z);
     }
 }
 
