@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,9 @@ public class Hurtbox : MonoBehaviour
     [SerializeField]
     private bool canDoInvincibility = false;
     
+    private bool healedThisFrame = false;
+
+    
     public void OnTriggerEnter(Collider other)
     {
         HandleTrigger(other);
@@ -51,8 +55,14 @@ public class Hurtbox : MonoBehaviour
         // Love hurts!
         if (hitbox.DamageType == DamageType.Healing)
         {
+            if (healedThisFrame)
+            {
+                return;
+            }
+            
             OnHurt?.Invoke(hitbox.DamageAmount, hitbox.DamageType);
             Destroy(other.gameObject);
+            healedThisFrame = true;
             return;
         }
         
@@ -103,5 +113,11 @@ public class Hurtbox : MonoBehaviour
         if (secondaryMeshRenderer != null)
             secondaryMeshRenderer.enabled = true;
         invincible = false;
+    }
+
+
+    private void FixedUpdate()
+    {
+        healedThisFrame = false;
     }
 }

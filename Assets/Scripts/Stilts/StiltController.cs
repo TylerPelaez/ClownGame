@@ -23,6 +23,9 @@ public class StiltController : MonoBehaviour
     [SerializeField]
     private BoxCollider stompHitbox;
 
+    [SerializeField]
+    private GameObject stiltHurtbox;
+
 
     [SerializeField]
     private float tweenTime;
@@ -70,8 +73,7 @@ public class StiltController : MonoBehaviour
         // Enable the mesh renderers of both stilts
         leftStilt.GetComponent<MeshRenderer>().enabled = true;
         rightStilt.GetComponent<MeshRenderer>().enabled = true;
-        stompHitbox.enabled = true;
-        
+
         if (currentScale.y < 3f)
         {
             // Scale up the stilts by adding 1 to the y-scale
@@ -104,8 +106,11 @@ public class StiltController : MonoBehaviour
     {
         if (tweener != null && tweener.active)
         {
-            tweener.Complete();
+            tweener.Complete(true);
         }
+        
+        // Update lastScaledTime
+        lastScaledTime = Time.time;
         
         tweener = DOTween.To(() => transform.localScale, StiltTween, newScale, tweenTime);
         tweener.SetEase(Ease.OutExpo);
@@ -121,14 +126,18 @@ public class StiltController : MonoBehaviour
 
     private void OnTweenComplete()
     {
-        // Update lastScaledTime
-        lastScaledTime = Time.time;
         if (transform.localScale.y <= 0)
         {
             // Disable the mesh renderers of both stilts
             leftStilt.GetComponent<MeshRenderer>().enabled = false;
             rightStilt.GetComponent<MeshRenderer>().enabled = false;
             stompHitbox.enabled = false;
+            stiltHurtbox.SetActive(false);
+        }
+        else
+        {
+            stompHitbox.enabled = true;
+            stiltHurtbox.SetActive(true);
         }
     }
     
