@@ -14,6 +14,9 @@ public class Pie : MonoBehaviour
     private LayerMask destroyMask;
     
     public UnityEvent OnHit;
+
+
+    public Vector3? travelDirection = null;
     
     private void Start()
     {
@@ -24,7 +27,7 @@ public class Pie : MonoBehaviour
     private void FixedUpdate()
     {
         if (!unmoving)
-            transform.position += transform.forward * speed * Time.deltaTime;
+            transform.position += (travelDirection ?? transform.forward) * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)

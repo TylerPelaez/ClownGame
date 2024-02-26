@@ -179,7 +179,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.85
-  m_BaseOffset: 0.62
+  m_BaseOffset: 1.16
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7887863703480029567
@@ -195,8 +195,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 20
-  state: 0
+  attackRange: 1
   animator: {fileID: 6639376024489732890}
+  ranged: 0
+  projectilePrefab: {fileID: 0}
+  projectileOrigin: {fileID: 0}
+  attackCooldown: 1
+  state: 0
 --- !u!54 &689109851609753950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -260,7 +265,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  damageTypeImmunities: 00000000
+  damageTypeImmunities: 0000000002000000
   OnHurt:
     m_PersistentCalls:
       m_Calls:

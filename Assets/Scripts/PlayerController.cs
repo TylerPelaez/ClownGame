@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector3 groundCheckOffset;
     [SerializeField] LayerMask groundLayer;
 
+
+    public GameObject enemyAimTarget;
+    
     CameraController cameraController;
     Animator animator;
     CharacterController characterController;

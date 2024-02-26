@@ -10,6 +10,29 @@ public class BaseEnemyAI : MonoBehaviour
     private float aggroRange = 5;
     private float aggroRangeSq, dropAggroRangeSq;
 
+    [SerializeField]
+    private float attackRange = 1;
+    private float attackRangeSq;
+
+    [SerializeField]
+    private Animator animator;
+    
+    
+    [SerializeField]
+    private bool ranged;
+    
+    [SerializeField]
+    private GameObject projectilePrefab;
+
+    [SerializeField]
+    private GameObject projectileOrigin;
+
+    [SerializeField]
+    private float attackCooldown = 1;
+
+    private float lastLeftAttackStateTime;
+    
+    
     [Header("Debug")]
     
     [SerializeField]
@@ -18,11 +41,10 @@ public class BaseEnemyAI : MonoBehaviour
     
     private NavMeshAgent navMeshAgent;
     private GameObject player;
-
-    [SerializeField]
-    private Animator animator;
-
+    
     private static readonly int Walking = Animator.StringToHash("Walking");
+    private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+    private static readonly int Attacking = Animator.StringToHash("Attacking");
 
 
     // Start is called before the first frame update
@@ -30,6 +52,7 @@ public class BaseEnemyAI : MonoBehaviour
     {
         aggroRangeSq = aggroRange * aggroRange;
         dropAggroRangeSq = (2 * aggroRange) * (2 * aggroRange);
+        attackRangeSq = attackRange * attackRange;
         navMeshAgent = GetComponent<NavMeshAgent>();
         
         player = GameObject.FindWithTag("Player");
@@ -51,7 +74,7 @@ public class BaseEnemyAI : MonoBehaviour
                 Chase();
                 break;
             case State.Attack:
-                Attack();
+                AttackState();
                 break;
         }
     }
@@ -63,14 +86,19 @@ public class BaseEnemyAI : MonoBehaviour
     }
     
     private void Idle()
-    {
-        if (IsPlayerInDistanceSq(aggroRangeSq))
+     {
+        if (IsPlayerInDistanceSq(aggroRangeSq) && !IsPlayerInDistanceSq(attackRangeSq))
         {
             NavMeshPath navMeshPath = navMeshAgent.path;
             if (navMeshAgent.CalculatePath(player.transform.position, navMeshPath))
             {
                 EnterChase();
             }
+        }
+
+        if (ShouldAttack())
+        {
+            EnterAttack();
         }
     }
 
@@ -81,6 +109,7 @@ public class BaseEnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(gameObject.transform.position);
         navMeshAgent.isStopped = true;
         animator.SetBool(Walking, false);
+        animator.SetFloat(MoveSpeed, 0);
     }
 
     private void EnterChase()
@@ -91,19 +120,71 @@ public class BaseEnemyAI : MonoBehaviour
     
     private void Chase()
     {
+        if (ShouldAttack())
+        {
+            EnterAttack();
+        }
+        
         if (!IsPlayerInDistanceSq(dropAggroRangeSq))
         {
             EnterIdle();
         }
-        
+
         navMeshAgent.SetDestination(player.transform.position);
         
         animator.SetBool("Walking", navMeshAgent.velocity != Vector3.zero);
+        animator.SetFloat(MoveSpeed, navMeshAgent.velocity.magnitude);
+        
+
     }
 
-    private void Attack()
+    private void AttackState()
     {
+        if (animator.GetBool(Attacking))
+        {
+            animator.SetBool(Attacking, false);
+        }
+
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            lastLeftAttackStateTime = Time.time;
+            if (!IsPlayerInDistanceSq(attackRangeSq))
+            {
+                EnterChase();
+            }
+            else
+            {
+                EnterIdle();
+            }
+        }
+    }
+
+    public void OnDoAttack()
+    {
+        GameObject aimTarget = player.GetComponent<PlayerController>().enemyAimTarget;
         
+        if (ranged)
+        {
+            var instance = Instantiate(projectilePrefab, projectileOrigin.transform.position, Quaternion.identity);
+            var directionToPlayer = (aimTarget.transform.position - projectileOrigin.transform.position).normalized;
+            instance.transform.forward = directionToPlayer;
+            instance.transform.Rotate(Vector3.right, 90, Space.Self);
+            instance.GetComponent<Pie>().travelDirection = directionToPlayer;
+        }
+        else
+        {
+            
+        }
+    }
+    
+    private void EnterAttack()
+    {
+        state = State.Attack;
+        navMeshAgent.SetDestination(gameObject.transform.position);
+        navMeshAgent.isStopped = true;
+        animator.SetBool(Attacking, true);
+        animator.SetBool(Walking, false);
+        animator.SetFloat(MoveSpeed, 0);
     }
 
     public void OnDeath()
@@ -111,6 +192,12 @@ public class BaseEnemyAI : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+    public bool ShouldAttack()
+    {
+        return IsPlayerInDistanceSq(attackRangeSq) && Time.time - lastLeftAttackStateTime > attackCooldown;
+    }
+    
     enum State
     {
         Idle,
