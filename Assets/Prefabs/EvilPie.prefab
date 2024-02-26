@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5074002320222050945}
   - component: {fileID: 4238635641819155142}
   - component: {fileID: 9124060513799168231}
-  m_Layer: 9
-  m_Name: Pie
+  m_Layer: 7
+  m_Name: EvilPie
   m_TagString: Pie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,10 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unmoving: 0
-  speed: 16
+  speed: 10
   destroyMask:
     serializedVersion: 2
-    m_Bits: 5249
+    m_Bits: 6785
   OnHit:
     m_PersistentCalls:
       m_Calls: []
