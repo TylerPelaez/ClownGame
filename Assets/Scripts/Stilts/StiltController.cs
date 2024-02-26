@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.VFX;
 
 public class StiltController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class StiltController : MonoBehaviour
     public GameObject clown;
     public GameObject ground;
 
+    public VisualEffect poofEffect;
 
     [SerializeField]
     private float clownMeshYOffset = 2.9f;
@@ -134,6 +136,11 @@ public class StiltController : MonoBehaviour
             rightStilt.GetComponent<MeshRenderer>().enabled = false;
             stompHitbox.enabled = false;
             stiltHurtbox.SetActive(false);
+
+            if (poofEffect != null)
+            {
+                poofEffect.Play();
+            }
         }
         else
         {
