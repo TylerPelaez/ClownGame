@@ -155,6 +155,6 @@ MonoBehaviour:
   sensitivity: 1
   minVerticalAngle: -7
   maxVerticalAngle: 50
-  framingOffset: {x: 0, y: 1}
+  framingOffset: {x: 0, y: 0.5}
   invertX: 0
   invertY: 1

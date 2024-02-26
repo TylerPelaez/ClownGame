@@ -470,11 +470,6 @@ PrefabInstance:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 75817210}
-    - target: {fileID: 9115922498609057961, guid: 1b82ba5fd28f8e54bad6ea4366d3c0a0,
-        type: 3}
-      propertyPath: framingOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -549,8 +544,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 242471917}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3559047048558819989, guid: 49fe96b4bc789eb4babec63a7715b806, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49fe96b4bc789eb4babec63a7715b806, type: 3}
