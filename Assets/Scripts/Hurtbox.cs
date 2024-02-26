@@ -39,6 +39,7 @@ public class Hurtbox : MonoBehaviour
             
         if (layerMask == (layerMask | (1 << other.gameObject.layer)))
         {
+
             var hitbox = other.gameObject.GetComponent<Hitbox>();
             if (damageTypeImmunities.Contains(hitbox.DamageType))
             {
@@ -47,6 +48,12 @@ public class Hurtbox : MonoBehaviour
             
             OnHurt?.Invoke(hitbox.DamageAmount, hitbox.DamageType);
             invincible = true;
+            if (other.gameObject.GetComponent<Pie>() != null)
+            {
+                Destroy(other.gameObject);
+            }
+            
+            
             StartCoroutine(WaitForInvincibility());
         }
     }
