@@ -61,6 +61,9 @@ public class StiltController : MonoBehaviour
             currentScale.y = Mathf.Min(currentScale.y + 1f, 3f);
 
             DoScale(currentScale, 0.5f);
+
+            FindObjectOfType<AudioManager>().Play("StiltUp");
+            FindObjectOfType<AudioManager>().Play("StiltStretch");
         }
     }
 
@@ -74,6 +77,9 @@ public class StiltController : MonoBehaviour
             currentScale.y = Mathf.Max(currentScale.y - 1f, 0f);
 
             DoScale(currentScale, -0.5f);
+
+            FindObjectOfType<AudioManager>().Play("StiltDown");
+            FindObjectOfType<AudioManager>().Play("StiltStretch");
         }
     }
 
