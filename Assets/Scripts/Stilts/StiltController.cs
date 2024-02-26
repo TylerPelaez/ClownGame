@@ -11,6 +11,9 @@ public class StiltController : MonoBehaviour
     private float lastScaledTime;
     public float cooldownDuration = 0.28f;
 
+    [HideInInspector]
+    public Vector3 currentScale;
+
     public GameObject clown;
     public GameObject ground;   
 
@@ -47,7 +50,7 @@ public class StiltController : MonoBehaviour
 
     void ScaleStiltsUp()
     {
-        Vector3 currentScale = transform.localScale;
+        currentScale = transform.localScale;
 
         if (currentScale.y < 3f)
         {
@@ -81,7 +84,7 @@ public class StiltController : MonoBehaviour
 
     void ScaleStiltsDown()
     {
-        Vector3 currentScale = transform.localScale;
+        currentScale = transform.localScale;
 
         if (currentScale.y > 0f)
         {

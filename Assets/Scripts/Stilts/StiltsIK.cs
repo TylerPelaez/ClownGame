@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class StiltsIK : MonoBehaviour
 {
-    public Transform leftFootIKTarget;
-    public Transform rightFootIKTarget;
     public Transform leftFootBone;
     public Transform rightFootBone;
     public Transform leftStilt;
@@ -14,7 +12,7 @@ public class StiltsIK : MonoBehaviour
     void LateUpdate()
     {
         // Left foot
-        if (leftFootIKTarget != null && leftFootBone != null)
+        if (leftFootBone != null)
         {
             Vector3 leftBonePosition = leftFootBone.position - new Vector3(0f, transform.localScale.y/2.0f - offsetY, 0f);
 
@@ -26,7 +24,7 @@ public class StiltsIK : MonoBehaviour
         }
 
         // Right foot
-        if (rightFootIKTarget != null && rightFootBone != null)
+        if (rightFootBone != null)
         {
             Vector3 rightBonePosition = rightFootBone.position - new Vector3(0f, transform.localScale.y/2.0f - offsetY, 0f);
 
