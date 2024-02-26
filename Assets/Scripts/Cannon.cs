@@ -23,6 +23,9 @@ public class Cannon : MonoBehaviour
 
     [SerializeField]
     private GameObject pieOrigin;
+
+    [SerializeField]
+    private GameObject collisionObject;
     
     void Fire()
     {
@@ -36,6 +39,10 @@ public class Cannon : MonoBehaviour
     {
         var instance = Instantiate(piePrefab, pieOrigin.transform.position, Quaternion.identity);
         instance.transform.forward = pieOrigin.transform.forward;
+        instance.transform.Rotate(Vector3.right, 90, Space.Self);
+        var pie =instance.GetComponent<Pie>();
+        pie.travelDirection = pieOrigin.transform.forward;
+        pie.ignoreCollisions = collisionObject;
     }
 
     void FireComplete()

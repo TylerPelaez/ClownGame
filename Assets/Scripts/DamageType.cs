@@ -2,5 +2,6 @@
 {
     Stomp,
     Pie,
-    Enemy
+    Enemy,
+    EnemyDropStilts,
 }

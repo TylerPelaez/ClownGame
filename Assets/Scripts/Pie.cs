@@ -13,10 +13,14 @@ public class Pie : MonoBehaviour
     [SerializeField]
     private LayerMask destroyMask;
     
+    
+    
+    
     public UnityEvent OnHit;
 
 
     public Vector3? travelDirection = null;
+    public GameObject ignoreCollisions;
     
     private void Start()
     {
@@ -32,7 +36,7 @@ public class Pie : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (destroyMask == (destroyMask | (1 << other.gameObject.layer)))
+        if ( other.gameObject != ignoreCollisions && destroyMask == (destroyMask | (1 << other.gameObject.layer)))
         {
             OnHit?.Invoke();
             FindObjectOfType<AudioManager>().Play("PieHit");

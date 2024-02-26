@@ -59,6 +59,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
+  enemyAimTarget: {fileID: 3612033820692086234}
 --- !u!143 &6362297281720269076
 CharacterController:
   m_ObjectHideFlags: 0
@@ -443,6 +444,122 @@ MonoBehaviour:
   piePrefab: {fileID: 4200657082694211167, guid: e9464aa9c5d9d514fad7726a666de912,
     type: 3}
   shootCooldown: 1
+--- !u!1 &4346760372444578575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 875696697868400632}
+  - component: {fileID: 7817757371795433704}
+  - component: {fileID: 4405708489831704326}
+  - component: {fileID: 1212585903946141495}
+  m_Layer: 11
+  m_Name: StiltsHurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &875696697868400632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346760372444578575}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4458919821084393153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7817757371795433704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346760372444578575}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &4405708489831704326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346760372444578575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d832d7a024a9b5d429fc6f05e3b8d030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  damageTypeImmunities: 010000000000000002000000
+  OnHurt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7883148565894199035}
+        m_TargetAssemblyTypeName: StiltController, Assembly-CSharp
+        m_MethodName: ScaleStiltsDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  meshRenderer: {fileID: 5612298866181260282}
+  secondaryMeshRenderer: {fileID: 6286517048614613775}
+  invincibilityTime: 0.5
+--- !u!54 &1212585903946141495
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346760372444578575}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5427795628560103394
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +756,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 875696697868400632}
   m_Father: {fileID: 1832175662463790914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6295084136760965727
@@ -2132,6 +2250,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 868740702720003005}
   m_SourcePrefab: {fileID: 100100000, guid: f821ae9afb38cc948a6e7c453820e7fe, type: 3}
+--- !u!1 &3612033820692086234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6339464459957475320, guid: f821ae9afb38cc948a6e7c453820e7fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 7339399312645220898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4453761779077742137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2876612189860064229, guid: f821ae9afb38cc948a6e7c453820e7fe,
@@ -2175,10 +2299,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.7
+  m_Radius: 0.3
+  m_Height: 1.27
   m_Direction: 1
-  m_Center: {x: 0, y: 0.85, z: 0}
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!114 &8176036028133848378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2223,6 +2347,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   meshRenderer: {fileID: 8960724786860828294}
+  secondaryMeshRenderer: {fileID: 0}
   invincibilityTime: 0.7
 --- !u!54 &868740702720003005
 Rigidbody:

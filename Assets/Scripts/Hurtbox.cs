@@ -15,7 +15,7 @@ public class Hurtbox : MonoBehaviour
     public UnityEvent<int, DamageType> OnHurt;
 
     [SerializeField]
-    private Renderer meshRenderer;
+    private Renderer meshRenderer, secondaryMeshRenderer;
     
     [SerializeField]
     private float invincibilityTime = 0.2f;
@@ -63,7 +63,10 @@ public class Hurtbox : MonoBehaviour
         float totalTime = 0;
         while (true)
         {
-            meshRenderer.enabled = !meshRenderer.enabled;
+            if (meshRenderer != null)
+                meshRenderer.enabled = !meshRenderer.enabled;
+            if (secondaryMeshRenderer != null)
+                secondaryMeshRenderer.enabled = !secondaryMeshRenderer.enabled;
             totalTime += InvincibilityBlinkStep;
             if (totalTime >= invincibilityTime)
             {
@@ -72,7 +75,10 @@ public class Hurtbox : MonoBehaviour
 
             yield return new WaitForSeconds(InvincibilityBlinkStep);
         }
-        meshRenderer.enabled = true;
+        if (meshRenderer != null)
+            meshRenderer.enabled = true;
+        if (secondaryMeshRenderer != null)
+            secondaryMeshRenderer.enabled = true;
         invincible = false;
     }
 }
