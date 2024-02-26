@@ -216,6 +216,7 @@ MonoBehaviour:
   ground: {fileID: 0}
   clownMeshYOffset: 2.9
   stompHitbox: {fileID: 6709327901789190073}
+  stiltHurtbox: {fileID: 4346760372444578575}
   tweenTime: 0.4
   ShowHidePieGun:
     m_PersistentCalls:
@@ -535,7 +536,7 @@ MonoBehaviour:
         m_CallState: 2
   meshRenderer: {fileID: 5612298866181260282}
   secondaryMeshRenderer: {fileID: 6286517048614613775}
-  invincibilityTime: 0.5
+  invincibilityTime: 0.3
   canDoInvincibility: 1
 --- !u!54 &1212585903946141495
 Rigidbody:
