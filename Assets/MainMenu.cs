@@ -27,6 +27,11 @@ public class MainMenu : MonoBehaviour
         {
             Debug.LogWarning("No EventSystem found in the scene.");
         }
+
+        Time.timeScale = 1;
+
+        Cursor.visible = true;
+        Screen.lockCursor = false;
     }
 
     public void PlayGame()
