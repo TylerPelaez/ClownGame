@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,7 +28,7 @@ public class Health : MonoBehaviour
 
     public void OnHurt(int amount, DamageType type)
     {
-        CurrentHealth -= amount;
+        CurrentHealth = Math.Clamp(CurrentHealth - amount, 0, MaxHealth);
         if (CurrentHealth <= 0)
         {
             OnDeath?.Invoke();

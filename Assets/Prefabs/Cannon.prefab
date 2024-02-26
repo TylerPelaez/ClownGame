@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleloop: {fileID: 5738570824730964962}
   floatLoop: 0
-  fireDelay: 4
+  fireDelay: 2
   piePrefab: {fileID: 4200657082694211167, guid: c4dd95c1b662dcd4cb8d86c9992ed845,
     type: 3}
   pieOrigin: {fileID: 6530025193657677799}

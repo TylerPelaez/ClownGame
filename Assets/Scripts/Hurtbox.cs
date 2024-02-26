@@ -34,18 +34,31 @@ public class Hurtbox : MonoBehaviour
 
     private void HandleTrigger(Collider other)
     {
+        var hitbox = other.gameObject.GetComponent<Hitbox>();
+        if (hitbox == null)
+        {
+            return;
+        }
+        
+        if (damageTypeImmunities.Contains(hitbox.DamageType))
+        {
+            return;
+        }
+
+        // Love hurts!
+        if (hitbox.DamageType == DamageType.Healing)
+        {
+            OnHurt?.Invoke(hitbox.DamageAmount, hitbox.DamageType);
+            Destroy(other.gameObject);
+            return;
+        }
+        
+        
         if (invincible)
             return;
             
         if (layerMask == (layerMask | (1 << other.gameObject.layer)))
         {
-
-            var hitbox = other.gameObject.GetComponent<Hitbox>();
-            if (damageTypeImmunities.Contains(hitbox.DamageType))
-            {
-                return;
-            }
-            
             OnHurt?.Invoke(hitbox.DamageAmount, hitbox.DamageType);
             invincible = true;
             if (other.gameObject.GetComponent<Pie>() != null)

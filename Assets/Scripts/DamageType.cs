@@ -4,4 +4,5 @@
     Pie,
     Enemy,
     EnemyDropStilts,
+    Healing,
 }

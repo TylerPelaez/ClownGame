@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pie
+  - cannonball
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Enemy
   - Player
   - Ground
-  - 
+  - HealthPickup
   - 
   - 
   - 
