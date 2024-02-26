@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("ThemeSong");
+        Play("BackgroundNoise");
     }
 
     public void Play (string name)
