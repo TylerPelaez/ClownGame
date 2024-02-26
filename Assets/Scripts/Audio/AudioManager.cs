@@ -6,8 +6,18 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
+    public static AudioManager instance;
+
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -22,6 +32,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("ThemeSong");
+        Play("BackgroundNoise");
     }
 
     public void Play (string name)
