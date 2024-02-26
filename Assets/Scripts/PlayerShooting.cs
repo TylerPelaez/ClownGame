@@ -24,6 +24,7 @@ public class PlayerShooting : MonoBehaviour
             var instance = Instantiate(piePrefab, transform.position, Quaternion.identity);
             lastFiredTime = Time.time;
             instance.transform.forward = transform.forward;
+            FindObjectOfType<AudioManager>().Play("PieThrow");
         }
     }
 }

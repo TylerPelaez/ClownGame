@@ -65,6 +65,9 @@ public class StiltController : MonoBehaviour
             // Update lastScaledTime
             lastScaledTime = Time.time;
 
+            FindObjectOfType<AudioManager>().Play("StiltUp");
+            FindObjectOfType<AudioManager>().Play("StiltStretch");
+
             UpdateClownPosition();
         }
 
@@ -98,6 +101,9 @@ public class StiltController : MonoBehaviour
 
             // Update lastScaledTime
             lastScaledTime = Time.time;
+
+            FindObjectOfType<AudioManager>().Play("StiltDown");
+            FindObjectOfType<AudioManager>().Play("StiltStretch");
 
             UpdateClownPosition();
         }
