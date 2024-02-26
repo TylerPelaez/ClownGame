@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class PlayerController : MonoBehaviour
     CameraController cameraController;
     Animator animator;
     CharacterController characterController;
-    Rigidbody rb;
 
     Quaternion targetRotation;
 
@@ -28,13 +26,8 @@ public class PlayerController : MonoBehaviour
         cameraController = Camera.main.GetComponent<CameraController>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
-    {
-        rb.useGravity = false;
-    }
     private void Update()
     {
         float h = Input.GetAxis("Horizontal");
@@ -96,5 +89,10 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
         Gizmos.DrawSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius);
+    }
+    
+    public void OnDeath()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

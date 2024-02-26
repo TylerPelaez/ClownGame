@@ -15,8 +15,11 @@ public class StiltController : MonoBehaviour
     public Vector3 currentScale;
 
     public GameObject clown;
-    public GameObject ground;   
+    public GameObject ground;
 
+    [SerializeField]
+    private BoxCollider stompHitbox;
+    
     private void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
@@ -57,31 +60,7 @@ public class StiltController : MonoBehaviour
             // Scale up the stilts by adding 1 to the y-scale
             currentScale.y = Mathf.Min(currentScale.y + 1f, 3f);
 
-            cameraController.framingOffset.y += 0.5f;
-
-            // Apply the new scale to the stilts
-            transform.localScale = currentScale;
-
-            // Update lastScaledTime
-            lastScaledTime = Time.time;
-
-            FindObjectOfType<AudioManager>().Play("StiltUp");
-            FindObjectOfType<AudioManager>().Play("StiltStretch");
-
-            UpdateClownPosition();
-        }
-
-        if (transform.localScale.y <= 0)
-        {
-            // Disable the mesh renderers of both stilts
-            leftStilt.GetComponent<MeshRenderer>().enabled = false;
-            rightStilt.GetComponent<MeshRenderer>().enabled = false;
-        }
-        else
-        {
-            // Enable the mesh renderers of both stilts
-            leftStilt.GetComponent<MeshRenderer>().enabled = true;
-            rightStilt.GetComponent<MeshRenderer>().enabled = true;
+            DoScale(currentScale, 0.5f);
         }
     }
 
@@ -94,31 +73,35 @@ public class StiltController : MonoBehaviour
             // Scale down the stilts by subtracting 1 from the y-scale
             currentScale.y = Mathf.Max(currentScale.y - 1f, 0f);
 
-            cameraController.framingOffset.y -= 0.5f;
-
-            // Apply the new scale to the stilts
-            transform.localScale = currentScale;
-
-            // Update lastScaledTime
-            lastScaledTime = Time.time;
-
-            FindObjectOfType<AudioManager>().Play("StiltDown");
-            FindObjectOfType<AudioManager>().Play("StiltStretch");
-
-            UpdateClownPosition();
+            DoScale(currentScale, -0.5f);
         }
+    }
+
+    private void DoScale(Vector3 newScale, float framingOffsetChange)
+    {
+//        cameraController.framingOffset.y += framingOffsetChange;
+
+        // Apply the new scale to the stilts
+        transform.localScale = newScale;
+
+        // Update lastScaledTime
+        lastScaledTime = Time.time;
+
+        UpdateClownPosition();
 
         if (transform.localScale.y <= 0)
         {
             // Disable the mesh renderers of both stilts
             leftStilt.GetComponent<MeshRenderer>().enabled = false;
             rightStilt.GetComponent<MeshRenderer>().enabled = false;
+            stompHitbox.enabled = false;
         }
         else
         {
             // Enable the mesh renderers of both stilts
             leftStilt.GetComponent<MeshRenderer>().enabled = true;
             rightStilt.GetComponent<MeshRenderer>().enabled = true;
+            stompHitbox.enabled = true;
         }
     }
 
@@ -131,7 +114,7 @@ public class StiltController : MonoBehaviour
         float actualYOffset = desiredYOffset * (3f - transform.localScale.y) / 3f;
 
         // Apply the position offset to the clown avatar
-        clown.transform.localPosition = new Vector3(clown.transform.localPosition.x, actualYOffset, clown.transform.localPosition.z);
+        clown.transform.localPosition = new Vector3(clown.transform.localPosition.x, actualYOffset + 3f, clown.transform.localPosition.z);
     }
 }
 

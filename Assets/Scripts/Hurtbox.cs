@@ -15,7 +15,7 @@ public class Hurtbox : MonoBehaviour
     public UnityEvent<int, DamageType> OnHurt;
 
     [SerializeField]
-    private MeshRenderer meshRenderer;
+    private Renderer meshRenderer;
     
     [SerializeField]
     private float invincibilityTime = 0.2f;
@@ -67,10 +67,5 @@ public class Hurtbox : MonoBehaviour
         }
         meshRenderer.enabled = true;
         invincible = false;
-    }
-    
-    public void OnPlayerDeath()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
