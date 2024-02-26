@@ -514,7 +514,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
-  damageTypeImmunities: 010000000000000002000000
+  damageTypeImmunities: 01000000000000000200000004000000
   OnHurt:
     m_PersistentCalls:
       m_Calls:
@@ -774,6 +774,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   damageType: 0
+  OnDisableRequested:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &6709327901789190073
 BoxCollider:
   m_ObjectHideFlags: 0

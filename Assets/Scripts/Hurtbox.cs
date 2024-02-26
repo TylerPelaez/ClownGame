@@ -60,6 +60,11 @@ public class Hurtbox : MonoBehaviour
         if (layerMask == (layerMask | (1 << other.gameObject.layer)))
         {
             OnHurt?.Invoke(hitbox.DamageAmount, hitbox.DamageType);
+            if (gameObject.name == "StiltsHurtbox" && hitbox.DamageType == DamageType.EnemyDropStilts)
+            {
+                hitbox.RequestDisable();
+            }
+
             invincible = true;
             if (other.gameObject.GetComponent<Pie>() != null)
             {

@@ -68,6 +68,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   damageType: 2
+  OnDisableRequested:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4567080465380252382
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +270,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  damageTypeImmunities: 0000000002000000
+  damageTypeImmunities: 00000000020000000300000004000000
   OnHurt:
     m_PersistentCalls:
       m_Calls:
@@ -356,6 +359,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   damageType: 3
+  OnDisableRequested:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7887863703480029567}
+        m_TargetAssemblyTypeName: BaseEnemyAI, Assembly-CSharp
+        m_MethodName: DisableMeleeHitbox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!23 &6540392489657576546
 MeshRenderer:
   m_ObjectHideFlags: 0

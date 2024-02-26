@@ -225,14 +225,14 @@ public class BaseEnemyAI : MonoBehaviour
         else
         {
             meleeHitboxObject.SetActive(true);
-            StartCoroutine(DisableMeleeHitbox());
+            StartCoroutine(DelayDisableMeleeHitbox());
         }
     }
 
-    private IEnumerator DisableMeleeHitbox()
+    private IEnumerator DelayDisableMeleeHitbox()
     {
         yield return new WaitForSeconds(.1f);
-        meleeHitboxObject.SetActive(false);
+        DisableMeleeHitbox();
     }
     
     private void EnterAttack()
@@ -273,5 +273,10 @@ public class BaseEnemyAI : MonoBehaviour
         Idle,
         Chase,
         Attack,
+    }
+
+    public void DisableMeleeHitbox()
+    {
+        meleeHitboxObject.SetActive(false);
     }
 }
