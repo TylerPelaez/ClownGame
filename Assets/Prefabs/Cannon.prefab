@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleloop: {fileID: 5738570824730964962}
+  floatLoop: 0
   fireDelay: 4
   piePrefab: {fileID: 4200657082694211167, guid: c4dd95c1b662dcd4cb8d86c9992ed845,
     type: 3}
@@ -279,6 +280,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2604451342525124521}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3779745573541866595, guid: 17f295f65136af94bbdfe266227ab62a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7468736122008592977}
     - targetCorrespondingSourceObject: {fileID: 1507767883509144192, guid: 17f295f65136af94bbdfe266227ab62a,
         type: 3}
       insertIndex: -1
@@ -313,3 +318,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5889277889617531094}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7335996122552761525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3779745573541866595, guid: 17f295f65136af94bbdfe266227ab62a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5889277889617531094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &7468736122008592977
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7335996122552761525}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.002068
+  m_Height: 2.91
+  m_Direction: 1
+  m_Center: {x: 0.00000029802322, y: 0.73, z: 0.00000017881393}

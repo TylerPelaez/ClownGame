@@ -8,7 +8,9 @@ public class Cannon : MonoBehaviour
 
     [SerializeField]
     private Animator idleloop;
-    
+
+    [SerializeField]
+    private bool floatLoop = true;
     
     [SerializeField]
     private float fireDelay = 3.0f;
@@ -46,6 +48,10 @@ public class Cannon : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        if (!floatLoop)
+        {
+            idleloop.SetFloat("FloatSpeed", 0f);            
+        }
     }
 
     private void Update()

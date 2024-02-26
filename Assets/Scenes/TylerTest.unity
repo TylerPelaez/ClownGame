@@ -785,6 +785,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 86936952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1620960531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620960533}
+  - component: {fileID: 1620960532}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1620960532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620960531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b86ab0fa0433143ab16171c7b2d9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: PieHit
+    clip: {fileID: 8300000, guid: eb901b89cf99b4b4fb591986384b7dbe, type: 3}
+    volume: 0.717
+    pitch: 1.79
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHit
+    clip: {fileID: 8300000, guid: f1e69fd61cad76040a72331b5a165175, type: 3}
+    volume: 0.256
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: StiltDown
+    clip: {fileID: 8300000, guid: 7dfb437b7790b8c4f970f1675afb3d1c, type: 3}
+    volume: 0.178
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: StiltUp
+    clip: {fileID: 8300000, guid: eccb45c1caf46e2478f581db76a0f674, type: 3}
+    volume: 0.163
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: StiltStretch
+    clip: {fileID: 8300000, guid: 860d86887c6bcd24e8fca0d283c95819, type: 3}
+    volume: 0.24
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ThemeSong
+    clip: {fileID: 8300000, guid: 856174fe992ac464eb7cb6f3406d0366, type: 3}
+    volume: 0.287
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BackgroundNoise
+    clip: {fileID: 8300000, guid: 0e74c443d94d3b24f9ad24e237b79be2, type: 3}
+    volume: 0.441
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: StiltWalk
+    clip: {fileID: 8300000, guid: 589168cb49eb35d4ba1fec3c142589ad, type: 3}
+    volume: 0.26
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PieThrow
+    clip: {fileID: 8300000, guid: f147f6d44373f624189fea4cd94f4cb1, type: 3}
+    volume: 0.217
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PopEffect
+    clip: {fileID: 8300000, guid: 0dfa5f3e5daa670419fb3227bf35e54a, type: 3}
+    volume: 0.217
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1620960533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620960531}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 107.38569, y: 3, z: 246.72873}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1631758512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,3 +1412,4 @@ SceneRoots:
   - {fileID: 123534447}
   - {fileID: 7006193122003955321}
   - {fileID: 964704530666258432}
+  - {fileID: 1620960533}
