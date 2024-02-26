@@ -203,10 +203,10 @@ MonoBehaviour:
   ranged: 0
   projectilePrefab: {fileID: 0}
   projectileOrigin: {fileID: 0}
-  attackCooldown: 2
+  attackCooldown: 1
   lastLeftAttackStateTime: 0
   meleeHitboxObject: {fileID: 8509891303065849446}
-  turnSpeed: 2
+  turnSpeed: 4
   state: 0
 --- !u!54 &689109851609753950
 Rigidbody:

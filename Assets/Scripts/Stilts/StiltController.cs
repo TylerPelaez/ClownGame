@@ -114,6 +114,7 @@ public class StiltController : MonoBehaviour
         
         tweener = DOTween.To(() => transform.localScale, StiltTween, newScale, tweenTime);
         tweener.SetEase(Ease.OutExpo);
+        tweener.SetLink(gameObject);
         tweener.onComplete += OnTweenComplete;
     }
 
